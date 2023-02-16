@@ -3,14 +3,12 @@ public class Node<T> {
     public Node<T> next;
     public   Node<T> previos;
 
-    public Node(T item, Node<T> next, Node<T> previos) {
+    public Node(T item) {
         this.item = item;
         this.next = next;
         this.previos = previos;
     }
 
-    public Node(T t) {
-    }
 
     public Node<T> getNext() {
         return next;
