@@ -1,38 +1,43 @@
 import java.util.Arrays;
 
 public class MyStack <V>{
-    static int n=0;
-    public   Object[] array=new Object[n];
+    private int size;
+    public Object[] array;
 
-    public  Object[]  push(V value){
-        array = Arrays.copyOf(array, array.length + 1);
-        array[n]=value;
-        n++;
-        return array;
+    public MyStack() {
+        array = new Object[size];
+        size = 0;
+
     }
-    public    Object[]  remove(int index){
+
+    public  void  push(V value){
+        array = Arrays.copyOf(array, array.length + 1);
+        array[size]=value;
+        size++;
+    }
+    public    Object  remove(int index){
         for (int i = index+1; i < array.length; i++) {
             array[i-1]=array[i];
         }
         array = Arrays.copyOf(array, array.length-1);
-        n--;
-        return array;
+        size--;
+        return array[index];
     }
     public int size(){
-        return n;
+        return size;
     }
     public   Object[]  clear(){
-        n=0;
-        array=Arrays.copyOf(array,n);
+        size=0;
+        array=Arrays.copyOf(array,size);
         return array;
     }
     public V peek(){
-        return (V) array[n-1];
+        return (V) array[size-1];
     }
     public V  pop(){
-        V temp= (V) array[n-1];
+        V temp= (V) array[size-1];
         array = Arrays.copyOf(array, array.length-1);
-        n--;
+        size--;
         return temp;
     }
     public static void main(String[] args) {
