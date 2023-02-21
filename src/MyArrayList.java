@@ -1,10 +1,8 @@
 import java.util.*;
 public  class MyArrayList <E> {
     static int n=0;
-    public   Object[] array;
-    public MyArrayList() {
-        array=new Object[n];
-    }
+    public   Object[] array=new Object[n];;
+
      public   Object[]  add(E value){
         array = Arrays.copyOf(array, array.length + 1);
         array[n]=value;
@@ -31,7 +29,7 @@ public  class MyArrayList <E> {
         return array[index];
     }
     public static void main(String[] args) {
-        var myArray = new MyArrayList<String>();
+        MyArrayList myArray = new MyArrayList<String>();
         myArray.add("ssa");
         myArray.add("1");
         myArray.add("sasa");

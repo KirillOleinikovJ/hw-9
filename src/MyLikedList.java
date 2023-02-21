@@ -9,7 +9,7 @@ public class MyLikedList <T>  {
     /////////////////////
     private Node<T> getCurrentByIndex(int index) {
         Node<T> current = head;
-        for (int i = 1; i <= index; i++) {
+        for (int i = 0; i < index; i++) {
             current = current.next;
         }
         return current;
@@ -44,14 +44,16 @@ public class MyLikedList <T>  {
             if (head == null) {
                 tail = null;
             }
-        } else {
-            Node<T> prevOfDelete = getCurrentByIndex(index - 1);
+        } else  if (index == size-1 ) {
+
+            tail.previos.next=null;
+            tail=tail.previos;
+            remItem=  tail.item;
+        }else  {
+            Node<T> prevOfDelete = getCurrentByIndex(index);
             remItem = prevOfDelete.next.item;
-            prevOfDelete = prevOfDelete.next.next;
-            prevOfDelete = prevOfDelete.previos.previos;
-            if (index == size - 1) {
-                tail = prevOfDelete;
-            }
+            prevOfDelete.previos.next =prevOfDelete.next;
+            prevOfDelete.next.previos=prevOfDelete.previos;
         }
         size--;
         return remItem;
@@ -72,6 +74,11 @@ public class MyLikedList <T>  {
             buffer = buffer.next;
         }
     }
+    public void clear(){
+        head=null;
+        tail=null;
+        size=0;
+    }
     public static void main(String[] args) {
         MyLikedList<Integer> l=new MyLikedList<Integer>();
         l.add(10);
@@ -79,9 +86,13 @@ public class MyLikedList <T>  {
         l.add(30);
         l.add(40);
         l.add(50);
+        l.remove(4);
         l.remove(3);
-        System.out.println("our land "+ l.size());
+        // l.remove();
+        System.out.println("our lang "+ l.size());
         System.out.println("our element "+ l.get(2));
+        l.ShouListForward();
+        l.clear();
         l.ShouListForward();
     }
 }
