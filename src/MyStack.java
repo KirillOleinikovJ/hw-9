@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class MyStack <V>{
+public class MyStack<V> {
     private int size;
     public Object[] array;
 
@@ -10,36 +10,42 @@ public class MyStack <V>{
 
     }
 
-    public  void  push(V value){
+    public void push(V value) {
         array = Arrays.copyOf(array, array.length + 1);
-        array[size]=value;
+        array[size] = value;
         size++;
     }
-    public    Object  remove(int index){
-        for (int i = index+1; i < array.length; i++) {
-            array[i-1]=array[i];
+
+    public Object remove(int index) {
+        for (int i = index + 1; i < array.length; i++) {
+            array[i - 1] = array[i];
         }
-        array = Arrays.copyOf(array, array.length-1);
+        array = Arrays.copyOf(array, array.length - 1);
         size--;
         return array[index];
     }
-    public int size(){
+
+    public int size() {
         return size;
     }
-    public   Object[]  clear(){
-        size=0;
-        array=Arrays.copyOf(array,size);
+
+    public Object[] clear() {
+        size = 0;
+        array = Arrays.copyOf(array, size);
         return array;
     }
-    public V peek(){
-        return (V) array[size-1];
+
+    public V peek() {
+        return (V) array[size - 1];
     }
-    public V  pop(){
-        V temp= (V) array[size-1];
-        array = Arrays.copyOf(array, array.length-1);
+
+    public V pop() {
+        V temp = (V) array[size - 1];
+        array = Arrays.copyOf(array, array.length - 1);
         size--;
         return temp;
     }
+
     public static void main(String[] args) {
         MyStack<Boolean> stack = new MyStack<>();
         stack.push(true);

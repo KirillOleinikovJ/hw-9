@@ -1,11 +1,13 @@
 import java.util.Objects;
 
-public class MyLikedList <T>  {
+public class MyLikedList<T> {
     private Node<T> head;
     private Node<T> tail;
-    int size=0;
+    int size = 0;
+
     public MyLikedList() {
     }
+
     /////////////////////
     private Node<T> getCurrentByIndex(int index) {
         Node<T> current = head;
@@ -15,15 +17,16 @@ public class MyLikedList <T>  {
         return current;
 
     }
+
     public void add(T element) {
-        Node<T> temp=new Node<T>(element);
-        if (size==0) {
-            head=tail=temp;
+        Node<T> temp = new Node<T>(element);
+        if (size == 0) {
+            head = tail = temp;
         } else if (size == 1) {
             tail = temp;
             head.next = temp;
             temp.previos = head;
-        }   else {
+        } else {
             Node<T> bufNod = tail;
             tail = temp;
             tail.previos = bufNod;
@@ -31,9 +34,11 @@ public class MyLikedList <T>  {
         }
         size++;
     }
-    public int size(){
+
+    public int size() {
         return size;
     }
+
     public T remove(int index) {
         Objects.checkIndex(index, size);
         T remItem;
@@ -44,23 +49,24 @@ public class MyLikedList <T>  {
             if (head == null) {
                 tail = null;
             }
-        } else  if (index == size-1 ) {
+        } else if (index == size - 1) {
 
-            tail.previos.next=null;
-            tail=tail.previos;
-            remItem=  tail.item;
-        }else  {
+            tail.previos.next = null;
+            tail = tail.previos;
+            remItem = tail.item;
+        } else {
             Node<T> prevOfDelete = getCurrentByIndex(index);
             remItem = prevOfDelete.next.item;
-            prevOfDelete.previos.next =prevOfDelete.next;
-            prevOfDelete.next.previos=prevOfDelete.previos;
+            prevOfDelete.previos.next = prevOfDelete.next;
+            prevOfDelete.next.previos = prevOfDelete.previos;
         }
         size--;
         return remItem;
     }
-    public T get(int index){
+
+    public T get(int index) {
         Objects.checkIndex(index, size);
-       Node<T> temp=head;
+        Node<T> temp = head;
         for (int i = 1; i <= index; i++) {
             temp = temp.next;
         }
@@ -74,13 +80,15 @@ public class MyLikedList <T>  {
             buffer = buffer.next;
         }
     }
-    public void clear(){
-        head=null;
-        tail=null;
-        size=0;
+
+    public void clear() {
+        head = null;
+        tail = null;
+        size = 0;
     }
+
     public static void main(String[] args) {
-        MyLikedList<Integer> l=new MyLikedList<Integer>();
+        MyLikedList<Integer> l = new MyLikedList<Integer>();
         l.add(10);
         l.add(20);
         l.add(30);
@@ -89,8 +97,8 @@ public class MyLikedList <T>  {
         l.remove(4);
         l.remove(3);
         // l.remove();
-        System.out.println("our lang "+ l.size());
-        System.out.println("our element "+ l.get(2));
+        System.out.println("our lang " + l.size());
+        System.out.println("our element " + l.get(2));
         l.ShouListForward();
         l.clear();
         l.ShouListForward();
