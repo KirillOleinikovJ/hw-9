@@ -29,10 +29,9 @@ public class MyStack<V> {
         return size;
     }
 
-    public Object[] clear() {
-        size = 0;
-        array = Arrays.copyOf(array, size);
-        return array;
+    public void clear() {
+        size=0;
+        array=new Object[size];
     }
 
     public V peek() {

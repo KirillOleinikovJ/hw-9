@@ -36,7 +36,7 @@ public class MyQueue<V> {
 
     public void clear() {
         size = 0;
-        array = Arrays.copyOf(array, size);
+        array=new Object[size];
 
     }
 
