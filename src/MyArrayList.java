@@ -7,7 +7,6 @@ public class MyArrayList<E> {
     public MyArrayList() {
         array = new Object[size];
         size = 0;
-
     }
 
     public void add(E value) {
@@ -29,20 +28,20 @@ public class MyArrayList<E> {
 
     public void clear() {
         size = 0;
-        array = Arrays.copyOf(array, size);
+       array=new Object[size];
 
     }
 
     public int size() {
-        return array.length;
+        return size;
     }
 
-    public Object get(int index) {
-        return array[index];
+    public E get(int index) {
+        return (E)array[index];
     }
 
     public static void main(String[] args) {
-        MyArrayList myArray = new MyArrayList<String>();
+        MyArrayList<String> myArray = new MyArrayList<>();
         myArray.add("ssa");
         myArray.add("1");
         myArray.add("sasa");
