@@ -30,7 +30,6 @@ public class MyHashMap<K, V> {
     public void put(Object key, Object value) {
         int index = Math.abs(key.hashCode()) % container.length;
         Node<K, V> ourNode = new Node<>((K) key, (V) value);
-        Node<K, V> ourSecondNode = container[index];
         if (size >= container.length) {
             changeSize();
         }
@@ -136,6 +135,7 @@ public class MyHashMap<K, V> {
         myMap.remove("igorr");
         myMap.remove("roma");
         myMap.put("artem", 900);
+        myMap.put("artem", 1900);
         System.out.println("myMap.toString() = " + myMap.toString());
         System.out.println("myMap.size() = " + myMap.size());
         System.out.println("myMap.get(\"igor\") = " + myMap.get("igorr"));

@@ -28,7 +28,7 @@ public class MyArrayList<E> {
 
     public void clear() {
         size = 0;
-       array=new Object[size];
+        array = new Object[size];
 
     }
 
@@ -36,8 +36,13 @@ public class MyArrayList<E> {
         return size;
     }
 
-    public E get(int index) {
-        return (E)array[index];
+    public Object get(int index) {
+        for (int i = 0; i < array.length; i++) {
+            if (i == index) {
+                return array[i];
+            }
+        }
+        throw new IndexOutOfBoundsException();
     }
 
     public static void main(String[] args) {
@@ -47,11 +52,15 @@ public class MyArrayList<E> {
         myArray.add("sasa");
         myArray.add("aaaaa");
         System.out.println("myArray.remove(2) = " + myArray.remove(2));
-        // MyArrayList.clear();
         for (int i = 0; i < myArray.size(); i++) {
             System.out.println(myArray.get(i));
         }
         System.out.println(myArray.size());
         System.out.println(myArray.get(2));
+        myArray.clear();
+        for (int i = 0; i < myArray.size(); i++) {
+            System.out.println(myArray.get(i));
+        }
+
     }
 }
