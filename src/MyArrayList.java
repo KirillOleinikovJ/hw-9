@@ -1,19 +1,26 @@
 import java.util.*;
 
 public class MyArrayList<E> {
-    private int size;
+    private final int ARRAY_LENGTH=10;
     public Object[] array;
-
+    private int size;
     public MyArrayList() {
-        array = new Object[size];
-        size = 0;
+       this. array = new Object[ARRAY_LENGTH];
+        this.size = 0;
     }
 
     public void add(E value) {
-        array = Arrays.copyOf(array, array.length + 1);
-        array[size] = value;
-        size++;
-
+        if (size < array.length) {
+            array[size++] = value;
+            return;
+        }
+        resizeMyArray(size * 2);
+        array[size++] = value;
+    }
+    private void resizeMyArray(int newLength) {
+        Object[] newArray = new Object[newLength];
+        System.arraycopy(array, 0, newArray, 0, size);
+        array = newArray;
     }
 
     public Object remove(int index) {
