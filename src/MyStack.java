@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class MyStack<V> {
     private int size;
@@ -16,13 +17,12 @@ public class MyStack<V> {
         size++;
     }
 
-    public Object remove(int index) {
-        for (int i = index + 1; i < array.length; i++) {
-            array[i - 1] = array[i];
-        }
-        array = Arrays.copyOf(array, array.length - 1);
+    public V remove(int index) {
+        Objects.checkIndex(index, size);
+        V temp=(V) array[index];
+        array = Arrays.copyOf(array, array.length-1);
         size--;
-        return array[index];
+        return temp;
     }
 
     public int size() {

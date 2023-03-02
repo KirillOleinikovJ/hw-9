@@ -22,11 +22,9 @@ public class MyQueue<V> {
 
     public V poll() {
         V temp = (V) array[0];
-        for (int i = 0; i < array.length - 1; i++) {
-            array[i] = array[i + 1];
-        }
         array = Arrays.copyOf(array, array.length - 1);
         size--;
+
         return temp;
     }
 

@@ -10,6 +10,7 @@ public class MyLikedList<T> {
 
     /////////////////////
     private Node<T> getCurrentByIndex(int index) {
+        Objects.checkIndex(index, size);
         Node<T> current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;

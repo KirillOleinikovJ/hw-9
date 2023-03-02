@@ -24,11 +24,9 @@ public class MyArrayList<E> {
     }
 
     public Object remove(int index) {
-        Object temp = array[index];
-        for (int i = index + 1; i < array.length; i++) {
-            array[i - 1] = array[i];
-        }
-        array = Arrays.copyOf(array, array.length - 1);
+        Objects.checkIndex(index, size);
+        E temp=(E) array[index];
+        array = Arrays.copyOf(array, array.length-1);
         size--;
         return temp;
     }
@@ -43,13 +41,9 @@ public class MyArrayList<E> {
         return size;
     }
 
-    public Object get(int index) {
-        for (int i = 0; i < array.length; i++) {
-            if (i == index) {
-                return array[i];
-            }
-        }
-        throw new IndexOutOfBoundsException();
+    public E get(int index) {
+        Objects.checkIndex(index, size);
+        return (E) array[index];
     }
 
     public static void main(String[] args) {
