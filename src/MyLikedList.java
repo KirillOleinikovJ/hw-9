@@ -62,7 +62,7 @@ public class MyLikedList<T> {
             prevOfDelete.next.previos = prevOfDelete.previos;
         }
         size--;
-        return remItem;
+        return (T) remItem;
     }
 
     public T get(int index) {

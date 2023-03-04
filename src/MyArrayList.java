@@ -23,7 +23,7 @@ public class MyArrayList<E> {
         array = newArray;
     }
 
-    public Object remove(int index) {
+    public E remove(int index) {
         Objects.checkIndex(index, size);
         E temp=(E) array[index];
         array = Arrays.copyOf(array, array.length-1);
