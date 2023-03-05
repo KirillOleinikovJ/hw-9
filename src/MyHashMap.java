@@ -27,7 +27,7 @@ public class MyHashMap<K, V> {
         }
     }
 
-    public void put(Object key, Object value) {
+    public void put(K key, V value) {
         int index = Math.abs(key.hashCode()) % container.length;
         Node<K, V> ourNode = new Node<>((K) key, (V) value);
         if (size >= container.length) {
